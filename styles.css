@@ -539,6 +539,127 @@ blockquote {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
+.pill--glow {
+  background: rgba(255, 99, 214, 0.32);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 25px rgba(255, 99, 214, 0.35);
+}
+
+.origin__spark {
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: clamp(1.5rem, 4vw, 2.75rem);
+  background: radial-gradient(circle at 20% 20%, rgba(255, 99, 214, 0.35), transparent 55%),
+              radial-gradient(circle at 80% 20%, rgba(124, 248, 255, 0.3), transparent 60%),
+              rgba(5, 1, 28, 0.92);
+  box-shadow: 0 30px 70px rgba(5, 0, 24, 0.55);
+  display: grid;
+  gap: 1.2rem;
+}
+
+.origin__spark-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.spark-chip {
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(12, 1, 38, 0.75);
+  display: grid;
+  gap: 0.3rem;
+}
+
+.spark-chip small {
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.65rem;
+  color: var(--muted-soft);
+}
+
+.spark-chip strong {
+  font-size: 1.1rem;
+  color: var(--text);
+}
+
+.spark-chip p {
+  margin: 0;
+}
+
+.origin__spark-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.origin__spark-list li {
+  padding-left: 1.6rem;
+  position: relative;
+  color: var(--muted);
+}
+
+.origin__spark-list li::before {
+  content: "✦";
+  position: absolute;
+  left: 0;
+  color: var(--brand-electric);
+}
+
+.origin__phases {
+  margin-top: clamp(2rem, 6vw, 3.5rem);
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.phase-card {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+  padding: 1.75rem;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.phase-card__label {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.68rem;
+  color: var(--muted-soft);
+}
+
+.phase-card__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.phase-card__list li {
+  padding-left: 1.5rem;
+  position: relative;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.phase-card__list li::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--brand-electric);
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+}
+
 .checklist {
   list-style: none;
   padding: 0;
