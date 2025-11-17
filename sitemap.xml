@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://spinitagain.sbs/</loc>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
@@ -11,8 +11,8 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://spinitagain.sbs/auth/</loc>
-    <changefreq>monthly</changefreq>
+    <loc>https://spinitagain.sbs/community-guidelines/</loc>
+    <changefreq>quarterly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
@@ -21,9 +21,24 @@
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://spinitagain.sbs/community-guidelines/</loc>
+    <loc>https://spinitagain.sbs/responsible-play/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://spinitagain.sbs/how-it-works/</loc>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://spinitagain.sbs/leaderboard/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://spinitagain.sbs/daily-bonus/</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://spinitagain.sbs/contact/</loc>
@@ -43,27 +58,12 @@
   <url>
     <loc>https://spinitagain.sbs/data-rights/</loc>
     <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://spinitagain.sbs/how-it-works/</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://spinitagain.sbs/privacy/</loc>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://spinitagain.sbs/profile/</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://spinitagain.sbs/responsible-play/</loc>
-    <changefreq>quarterly</changefreq>
-    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://spinitagain.sbs/terms/</loc>
