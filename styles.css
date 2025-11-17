@@ -325,7 +325,7 @@ blockquote {
   align-items: center;
 }
 
-.hero__intro {
+.hero__content {
   display: grid;
   gap: 1.5rem;
   padding: clamp(1.25rem, 3vw, 2.25rem);
@@ -335,12 +335,12 @@ blockquote {
   box-shadow: 0 25px 55px rgba(5, 0, 20, 0.55);
 }
 
-.hero__intro h1,
-.hero__intro p {
+.hero__content h1,
+.hero__content p {
   text-shadow: 0 8px 24px rgba(2, 3, 8, 0.65);
 }
 
-.hero__intro .pill {
+.hero__content .pill {
   background: rgba(255, 99, 214, 0.18);
   color: var(--text);
   border-color: rgba(255, 255, 255, 0.3);
@@ -369,6 +369,10 @@ blockquote {
   align-items: center;
 }
 
+.hero__grid--primary {
+  align-items: stretch;
+}
+
 .hero__card {
   background: var(--surface);
   border-radius: var(--radius-lg);
@@ -379,65 +383,126 @@ blockquote {
   gap: 1.5rem;
 }
 
-.hero__chips {
+.hero__badge-row {
   display: flex;
   flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+.hero-badge {
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(6, 0, 28, 0.72);
+  min-width: 160px;
+  display: grid;
+  gap: 0.1rem;
+}
+
+.hero-badge span {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.65rem;
+  color: var(--muted-soft);
+}
+
+.hero-badge strong {
+  font-size: 0.95rem;
+}
+
+.hero__meta-grid {
+  margin-top: 1rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.hero__metric {
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: rgba(8, 3, 28, 0.75);
+  padding: 1rem 1.1rem;
+  box-shadow: 0 20px 50px rgba(5, 0, 25, 0.35);
+}
+
+.hero__metric small {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.17em;
+  font-size: 0.68rem;
+  color: var(--muted-soft);
+  margin-bottom: 0.35rem;
+}
+
+.hero__metric strong {
+  font-size: 1.4rem;
+  color: var(--text);
+}
+
+.hero__metric p {
+  margin-top: 0.15rem;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+.hero__card--highlight {
+  background: linear-gradient(135deg, rgba(255, 99, 214, 0.18), rgba(124, 248, 255, 0.2));
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 35px 65px rgba(5, 0, 20, 0.55);
+  display: grid;
+  gap: 1.25rem;
+}
+
+.hero__schedule {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
   gap: 0.9rem;
-  margin-top: 0.5rem;
+}
+
+.hero__schedule li {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.hero__schedule strong {
+  font-size: 1rem;
+  color: var(--brand-electric);
+}
+
+.hero__schedule span {
+  color: var(--muted);
+}
+
+.hero__chip-grid {
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
 }
 
 .hero__chip {
-  min-width: 120px;
-  padding: 0.8rem 1rem;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.32);
-  background: rgba(8, 3, 28, 0.82);
-  text-align: center;
-  box-shadow: 0 18px 40px rgba(5, 0, 22, 0.5);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(8, 0, 28, 0.6);
+  padding: 0.85rem 1rem;
+  box-shadow: 0 20px 40px rgba(5, 0, 20, 0.45);
 }
 
 .hero__chip small {
   display: block;
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  font-size: 0.7rem;
-  color: var(--muted-strong);
+  font-size: 0.64rem;
+  color: var(--muted-soft);
+  margin-bottom: 0.2rem;
 }
 
 .hero__chip strong {
-  font-size: 1.1rem;
-  color: #fff;
-}
-
-.hero__stats {
-  margin-top: 2rem;
-}
-
-.stat-grid {
-  display: grid;
-  gap: 1.25rem;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-}
-
-.stat {
-  padding: 1.1rem 1.25rem;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border);
-  background: var(--surface-alt);
-  box-shadow: 0 18px 45px rgba(5, 7, 18, 0.45);
-}
-
-.stat small {
-  display: block;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  font-size: 0.68rem;
-  color: var(--muted-soft);
-  margin-bottom: 0.4rem;
-}
-
-.stat strong {
-  font-size: 1.7rem;
+  font-size: 0.95rem;
+  color: var(--text);
 }
 
 .section {
