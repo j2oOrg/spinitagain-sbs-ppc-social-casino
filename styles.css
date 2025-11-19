@@ -134,6 +134,29 @@ blockquote {
   transform: translate(-50%, 0);
 }
 
+.notice-bar {
+  background: linear-gradient(120deg, #ff63d6, #ffb861);
+  color: #14021e;
+  padding: 0.9rem 1.5rem;
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.notice-bar a {
+  color: #14021e;
+  text-decoration: underline;
+  font-weight: 700;
+}
+
+.notice-bar strong {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.75rem;
+  margin-right: 0.35rem;
+}
+
 .shell {
   width: min(1180px, 100%);
   margin: 0 auto;
