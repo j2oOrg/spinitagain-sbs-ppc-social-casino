@@ -3,695 +3,776 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Content-Language" content="en-US">
-  <meta name="theme-color" content="#ff63d6">
-  <title>SpinItAgain.sbs Social Casino | Neon Nightly Lounge</title>
-  <meta name="description" content="SpinItAgain.sbs is the neon social casino lounge with live hosts, mindful rituals, playlists, and zero cash play.">
-  <meta name="keywords" content="SpinItAgain.sbs, social casino, cash-free spins, mindful gaming, neon lounge, hosted rooms">
-  <meta name="robots" content="index, follow">
-  <meta property="og:site_name" content="SpinItAgain.sbs">
-  <meta property="og:title" content="SpinItAgain.sbs Social Casino | Neon Nightly Lounge">
-  <meta property="og:description" content="SpinItAgain.sbs is the neon social casino lounge with live hosts, mindful rituals, playlists, and zero cash play.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://spinitagain.sbs/">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="SpinItAgain.sbs Social Casino | Neon Nightly Lounge">
-  <meta name="twitter:description" content="SpinItAgain.sbs is the neon social casino lounge with live hosts, mindful rituals, playlists, and zero cash play.">
-  <link rel="canonical" href="https://spinitagain.sbs/">
-  <link rel="alternate" href="https://spinitagain.sbs/" hreflang="en">
-  <link rel="alternate" href="https://spinitagain.sbs/" hreflang="x-default">
+  <title>spinitagain.sbs — Social casino style play, no cash required</title>
+  <meta name="description" content="spinitagain.sbs is a clean, free-to-play hub for social casino style browser games. Instant access, 18+ only, no deposits or prizes.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    :root{
+      --bg: #060a14;
+      --panel: rgba(255,255,255,0.05);
+      --panel-strong: rgba(255,255,255,0.08);
+      --text: #e9eeff;
+      --muted: #b7c2db;
+      --heading: #fdf6ff;
+      --accent: #f5c452;
+      --accent-2: #70f0c7;
+      --border: rgba(255,255,255,0.12);
+      --radius: 14px;
+      --font-heading: "Space Grotesk", "Inter", system-ui, sans-serif;
+      --font-body: "Poppins", "Inter", system-ui, sans-serif;
+      --shadow: 0 24px 70px rgba(0,0,0,0.5);
+    }
 
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="stylesheet" href="/styles.css?v=3">
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:var(--font-body);
+      background:
+              radial-gradient(circle at 15% 10%, rgba(112,240,199,0.08), transparent 28%),
+              radial-gradient(circle at 80% 8%, rgba(245,196,82,0.12), transparent 30%),
+              linear-gradient(140deg, #070c19, #050812 60%, #0b1021);
+      color:var(--text);
+      line-height:1.65;
+      min-height:100vh;
+      -webkit-font-smoothing:antialiased;
+    }
+    a{color:var(--accent-2); text-decoration:none; transition:color .18s, opacity .18s}
+    a:hover{color:var(--accent); opacity:0.9}
+    .link-accent{color:var(--accent); font-weight:700}
+    .link-accent:hover{color:var(--accent-2)}
+    img{max-width:100%; display:block}
 
+    .container{width:min(1140px, 100% - 2rem); margin:0 auto}
+
+    .notice-banner{
+      background:linear-gradient(135deg, var(--accent), var(--accent-2));
+      color:#031017;
+      padding:0.55rem 0;
+      text-align:center;
+      font-weight:700;
+      border-bottom:1px solid rgba(0,0,0,0.2);
+      box-shadow:0 10px 28px rgba(0,0,0,0.35);
+      position:relative;
+      z-index:70;
+    }
+    .banner-inner{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:0.65rem;
+      flex-wrap:wrap;
+      font-size:0.97rem;
+    }
+    .banner-pill{
+      background:rgba(0,0,0,0.12);
+      color:#031017;
+      padding:0.35rem 0.7rem;
+      border-radius:999px;
+      font-weight:800;
+      letter-spacing:0.5px;
+    }
+
+    .spinitagain-sbs-cloud-nav{
+      background:rgba(6,10,20,0.92);
+      border-bottom:1px solid var(--border);
+      backdrop-filter:blur(14px);
+      position:sticky;
+      top:0;
+      z-index:60;
+      padding:0.85rem 0;
+    }
+    .spinitagain-sbs-cloud-nav .navbar-brand{
+      display:flex;
+      align-items:center;
+      gap:0.65rem;
+      padding:0;
+    }
+    .brand-logo{
+      width:132px;
+      height:auto;
+      display:block;
+      border-radius:12px;
+      box-shadow:0 12px 30px rgba(0,0,0,0.45);
+    }
+    .spinitagain-sbs-cloud-nav .nav-link{
+      color:var(--text);
+      font-weight:600;
+      margin:0 0.35rem;
+      padding:0.35rem 0.65rem;
+      border-radius:10px;
+      transition:background .15s, color .15s;
+    }
+    .spinitagain-sbs-cloud-nav .nav-link.active,
+    .spinitagain-sbs-cloud-nav .nav-link:hover{
+      background:var(--panel);
+      color:var(--accent);
+    }
+    .navbar-toggler{
+      border:1px solid var(--border);
+      color:var(--text);
+    }
+    .navbar-toggler:focus{box-shadow:0 0 0 3px rgba(112,240,199,0.18)}
+
+    .spinitagain-sbs-cloud-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:0.4rem;
+      padding:0.78rem 1.6rem;
+      border-radius:12px;
+      font-weight:700;
+      border:1px solid transparent;
+      cursor:pointer;
+      transition:transform .16s ease, box-shadow .2s ease, background .2s ease, color .2s ease;
+      text-decoration:none;
+    }
+    .spinitagain-sbs-cloud-btn.primary{
+      background:linear-gradient(135deg, var(--accent), var(--accent-2));
+      color:#060a14;
+      box-shadow:0 14px 36px rgba(0,0,0,0.4);
+    }
+    .spinitagain-sbs-cloud-btn.primary:hover{transform:translateY(-2px)}
+    .spinitagain-sbs-cloud-btn.ghost{
+      background:var(--panel);
+      border-color:var(--border);
+      color:var(--text);
+    }
+    .spinitagain-sbs-cloud-btn.ghost:hover{color:var(--accent)}
+
+    .eyebrow{
+      text-transform:uppercase;
+      letter-spacing:2px;
+      font-size:0.78rem;
+      color:var(--muted);
+      margin:0 0 0.35rem;
+    }
+    .section-title{
+      font-family:var(--font-heading);
+      color:var(--heading);
+      font-size:2.1rem;
+      margin:0 0 0.45rem;
+    }
+    .section-sub{margin:0 0 1rem; color:var(--muted)}
+
+    .spinitagain-sbs-cloud-hero{
+      position:relative;
+      padding:clamp(3rem, 6vw, 4.8rem) 0;
+      overflow:hidden;
+    }
+    .spinitagain-sbs-cloud-hero::before,
+    .spinitagain-sbs-cloud-hero::after{
+      content:"";
+      position:absolute;
+      width:420px; height:420px;
+      border-radius:50%;
+      filter:blur(120px);
+      opacity:0.35;
+      z-index:0;
+    }
+    .spinitagain-sbs-cloud-hero::before{top:-120px; left:-60px; background:radial-gradient(circle, rgba(112,240,199,0.45), transparent 60%)}
+    .spinitagain-sbs-cloud-hero::after{bottom:-140px; right:-20px; background:radial-gradient(circle, rgba(245,196,82,0.45), transparent 60%)}
+    .hero-inner{
+      position:relative;
+      z-index:1;
+      display:grid;
+      grid-template-columns:1fr;
+      gap:1.6rem;
+      text-align:center;
+    }
+    .hero-title{
+      font-family:var(--font-heading);
+      font-size:2.8rem;
+      line-height:1.08;
+      margin:0 0 0.6rem;
+    }
+    .hero-sub{
+      color:var(--muted);
+      margin:0 auto;
+      max-width:780px;
+    }
+    .hero-cta{display:flex; justify-content:center; gap:0.8rem; flex-wrap:wrap; margin-top:1.1rem}
+    .hero-badges{
+      display:flex;
+      justify-content:center;
+      gap:0.6rem;
+      flex-wrap:wrap;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:0.35rem;
+      padding:0.4rem 0.8rem;
+      border-radius:999px;
+      background:var(--panel);
+      border:1px solid var(--border);
+      color:var(--muted);
+      font-weight:600;
+      font-size:0.95rem;
+    }
+    .pill.accent{
+      background:rgba(245,196,82,0.14);
+      color:var(--accent);
+      border-color:rgba(245,196,82,0.4);
+    }
+
+    .spinitagain-sbs-cloud-disclaimer-card{padding:3rem 0}
+    .disclaimer-box{
+      max-width:900px;
+      margin:0 auto;
+      background:var(--panel);
+      border:1px solid var(--border);
+      padding:1.4rem;
+      border-radius:16px;
+      text-align:center;
+      box-shadow:var(--shadow);
+    }
+    .disclaimer-title{
+      color:var(--heading);
+      margin:0 0 0.35rem;
+      font-family:var(--font-heading);
+    }
+    .disclaimer-heading{
+      margin:0 0 0.4rem;
+      color:var(--heading);
+      font-family:var(--font-heading);
+    }
+    .disclaimer-text{color:var(--muted); margin:0 0 1rem}
+    .disclaimer-btn{
+      background:var(--accent);
+      color:#060a14;
+      padding:0.6rem 1.25rem;
+      border-radius:999px;
+      font-weight:700;
+      display:inline-block;
+    }
+    .disclaimer-btn:hover{background:var(--accent-2); color:#02150f}
+
+    .spinitagain-sbs-cloud-play{
+      padding:3.5rem 0;
+      text-align:center;
+    }
+    .game-wrapper{
+      margin:2rem auto;
+      display:flex;
+      justify-content:center;
+    }
+    .game-wrapper > .w-100{
+      width:100%;
+      max-width:920px;
+      text-align:center;
+    }
+    .game-frame{
+      position:relative;
+      width:100%;
+      max-width:920px;
+      border-radius:14px;
+      overflow:hidden;
+      background:linear-gradient(160deg, rgba(245,196,82,0.14), rgba(112,240,199,0.08));
+      border:1px solid var(--border);
+      box-shadow:0 16px 40px rgba(0,0,0,0.45);
+    }
+    .game-frame::before{content:""; display:block; padding-top:56.25%;}
+    .game-frame iframe{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      border:0;
+    }
+    .game-caption{
+      margin-top:0.5rem;
+      color:var(--muted);
+      font-weight:600;
+    }
+
+    .spinitagain-sbs-cloud-features{
+      padding:3.5rem 0;
+      background:rgba(255,255,255,0.01);
+    }
+    .feature-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(240px,1fr));
+      gap:1rem;
+      margin-top:1.6rem;
+    }
+    .feature-box{
+      background:var(--panel);
+      border:1px solid var(--border);
+      padding:1.4rem;
+      border-radius:12px;
+      color:var(--text);
+      transition:transform .16s, box-shadow .16s;
+      box-shadow:var(--shadow);
+    }
+    .feature-box:hover{transform:translateY(-4px); box-shadow:0 18px 46px rgba(0,0,0,0.6)}
+    .feature-icon{font-size:1.9rem; color:var(--accent); margin-bottom:0.4rem}
+    .feature-box h4{margin:0 0 0.35rem; font-family:var(--font-heading)}
+    .feature-box p{margin:0; color:var(--muted)}
+
+    .spinitagain-sbs-cloud-about{padding:3.8rem 0}
+    .about-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:1.8rem;
+      align-items:center;
+    }
+    .about-visual{
+      background:linear-gradient(145deg, rgba(245,196,82,0.2), rgba(112,240,199,0.16));
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:1.5rem;
+      position:relative;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .about-visual img{border-radius:12px; box-shadow:0 16px 36px rgba(0,0,0,0.55)}
+    .about-text p{color:var(--muted); margin:0 0 0.8rem}
+    .about-text .spinitagain-sbs-cloud-btn{margin-top:0.4rem}
+
+    .spinitagain-sbs-cloud-reviews{
+      padding:3.5rem 0;
+      text-align:center;
+    }
+    .reviews-grid{
+      max-width:940px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
+      gap:1rem;
+    }
+    .review-card{
+      background:var(--panel);
+      border:1px solid var(--border);
+      padding:1.2rem;
+      border-radius:12px;
+      box-shadow:var(--shadow);
+    }
+    .review-text{font-style:italic; color:var(--text); margin:0 0 0.6rem}
+    .review-author{color:var(--accent); font-weight:700; margin:0}
+
+    .spinitagain-sbs-cloud-contact{
+      background:rgba(255,255,255,0.01);
+      padding:4rem 0;
+    }
+    .contact-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:1.6rem;
+    }
+    .contact-info{
+      background:var(--panel);
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:1.1rem;
+      color:var(--text);
+    }
+    .contact-info p{margin:0.1rem 0; color:var(--muted)}
+    .contact-info strong{color:var(--text)}
+    .contact-form{
+      background:var(--panel);
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:1.1rem;
+      display:flex;
+      flex-direction:column;
+      gap:0.9rem;
+      box-shadow:var(--shadow);
+    }
+    .contact-form input,
+    .contact-form textarea{
+      width:100%;
+      padding:0.78rem 0.9rem;
+      border-radius:10px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,0.03);
+      color:var(--text);
+      font-size:1rem;
+      transition:border .16s, box-shadow .16s;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus{
+      outline:none;
+      border-color:var(--accent-2);
+      box-shadow:0 0 0 3px rgba(112,240,199,0.18);
+    }
+    .form-status{
+      min-height:20px;
+      color:var(--muted);
+    }
+    .form-status.success{color:#8ef8c8}
+    .form-status.error{color:#f5c452}
+
+    .spinitagain-sbs-cloud-legal{
+      background:rgba(255,255,255,0.02);
+      border-top:1px solid var(--border);
+      border-bottom:1px solid var(--border);
+      padding:3.5rem 0;
+    }
+    .spinitagain-sbs-cloud-legal .section-title{text-align:center}
+    .spinitagain-sbs-cloud-legal .subheading{
+      color:var(--accent);
+      font-size:1.15rem;
+      margin:1.6rem 0 0.4rem;
+    }
+    .spinitagain-sbs-cloud-legal p{
+      color:var(--muted);
+      margin:0 0 1rem;
+    }
+
+    .spinitagain-sbs-cloud-footer{
+      background:rgba(6,10,20,0.95);
+      color:var(--text);
+      text-align:center;
+      padding:3.2rem 1rem 2.4rem;
+      border-top:1px solid var(--border);
+      position:relative;
+      overflow:hidden;
+    }
+    .spinitagain-sbs-cloud-footer::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:radial-gradient(circle at 50% 20%, rgba(245,196,82,0.04), transparent 65%);
+      z-index:0;
+    }
+    .spinitagain-sbs-cloud-footer .container{position:relative; z-index:1}
+    .footer-brand{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:0.7rem;
+      margin-bottom:1rem;
+    }
+    .footer-disclaimer{
+      background:var(--panel);
+      border:1px solid var(--border);
+      color:var(--muted);
+      max-width:780px;
+      margin:0 auto 1.6rem;
+      padding:1.2rem;
+      border-radius:14px;
+      box-shadow:var(--shadow);
+    }
+    .footer-links{
+      display:flex;
+      justify-content:center;
+      gap:0.85rem;
+      flex-wrap:wrap;
+      padding:0;
+      margin:0 0 1rem;
+      list-style:none;
+    }
+    .footer-links a{
+      color:var(--accent);
+      font-weight:600;
+    }
+    .footer-links a:hover{color:var(--accent-2)}
+    .footer-copy{
+      color:var(--muted);
+      margin:0;
+    }
+
+    .spinitagain-sbs-cloud-popup{
+      position:fixed;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:rgba(0,0,0,0.82);
+      z-index:9999;
+      opacity:0;
+      visibility:hidden;
+      transition:opacity .2s, visibility .2s;
+      padding:1rem;
+    }
+    .spinitagain-sbs-cloud-popup.active{opacity:1; visibility:visible}
+    .spinitagain-sbs-cloud-popup .popup-inner{
+      background:linear-gradient(160deg, rgba(6,10,20,0.96), rgba(6,10,20,0.98));
+      border:1px solid var(--border);
+      color:var(--text);
+      padding:1.6rem;
+      border-radius:14px;
+      max-width:520px;
+      text-align:center;
+      box-shadow:var(--shadow);
+    }
+    .spinitagain-sbs-cloud-popup h3{margin:0 0 0.4rem; color:var(--heading)}
+    .spinitagain-sbs-cloud-popup p{margin:0 0 0.8rem; color:var(--muted)}
+    .popup-buttons{display:flex; justify-content:center; gap:0.6rem; flex-wrap:wrap}
+    .popup-buttons .exit{background:transparent; border:1px solid var(--border); color:var(--heading)}
+    .popup-buttons .exit:hover{background:var(--panel)}
+
+    .spinitagain-sbs-cloud-scroll{
+      position:fixed;
+      right:22px;
+      bottom:22px;
+      width:44px;
+      height:44px;
+      border-radius:50%;
+      border:none;
+      background:var(--accent);
+      color:#060a14;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      box-shadow:0 14px 34px rgba(0,0,0,0.55);
+      opacity:0;
+      visibility:hidden;
+      transition:all .16s;
+      z-index:90;
+    }
+    .spinitagain-sbs-cloud-scroll.show{opacity:1; visibility:visible}
+    .spinitagain-sbs-cloud-scroll:hover{background:var(--accent-2)}
+
+    .sr-only{
+      position:absolute;
+      width:1px;
+      height:1px;
+      padding:0;
+      margin:-1px;
+      overflow:hidden;
+      clip:rect(0,0,0,0);
+      border:0;
+    }
+
+    @media (max-width: 992px){
+      .about-grid,
+      .contact-grid{
+        grid-template-columns:1fr;
+      }
+      .hero-title{font-size:2.4rem}
+    }
+    @media (max-width: 768px){
+      .hero-title{font-size:2.05rem}
+      .game-frame{max-width:100%}
+      .spinitagain-sbs-cloud-nav{padding:0.75rem 0}
+    }
+    @media (max-width: 576px){
+      .hero-cta{flex-direction:column}
+      .brand-logo{width:114px}
+    }
+
+  </style>
 </head>
-<body>
-  <a class="skip-link" href="#main-content">Skip to main content</a>
-  <div class="notice-bar" role="status" aria-live="polite">
-    <strong>Social casino notice:</strong> SpinItAgain.sbs is a free-to-play social casino with no real-money gambling or prizes. 18+ only. Please play responsibly and visit <a href="/responsible-play/">Responsible Play</a> for support.
+<body class="spinitagain-sbs-cloud spinitagain-sbs-cloud-z3e9">
+
+<div class="notice-banner notice-banner-p4o3">
+  <div class="container container-g1j0 banner-inner banner-inner-u7q0">
+    <span class="banner-pill banner-pill-d9v2">18+</span>
+    <span>Spinitagain is a free-to-play social casino experience. No real-money gambling or prizes. 18+ only. Please play responsibly.</span>
   </div>
+</div>
 
-  <header class="site-header">
-    <div class="shell header__inner">
-      <a class="brand" href="/" aria-label="SpinItAgain.sbs home">
-                <div class='brand__logo' role='img' aria-label='SpinItAgain.sbs neon domain logo'>
-          <span aria-hidden='true'>SPINITAGAIN.SBS</span>
-        </div>
-      </a>
+<!-- NAVBAR -->
+<nav class="navbar navbar-o8m1 navbar-expand-lg navbar-expand-lg-m6y6 spinitagain-sbs-cloud-nav spinitagain-sbs-cloud-nav-e3l3">
+  <div class="container container-g1j0 d-flex d-flex-q5f2 align-items-center align-items-center-v5i0 justify-content-between justify-content-between-v2r9">
+    <a class="navbar-brand navbar-brand-d6z2" href="/">
+      <img class="brand-logo brand-logo-c2e3" src="/public/images/logo.webp" alt="Spinitagain logo">
+      <span class="sr-only sr-only-b4d1">spinitagain.sbs</span>
+    </a>
+    <button class="navbar-toggler navbar-toggler-f6h3" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon navbar-toggler-icon-x7i3"><i class="fas fas-c9r9 fa-bars fa-bars-y5b5"></i></span>
+    </button>
 
-      <nav class="site-nav" aria-label="Primary">
-        <a href="/" aria-current="page">Home</a>
-        <a href="/community/">Community</a>
-        <a href="/responsible-play/">Responsible Play</a>
-        <a href="/contact/">Contact</a>
-      </nav>
+    <div class="collapse collapse-x7l4 navbar-collapse navbar-collapse-v4r1 justify-content-end justify-content-end-h6f4" id="navMenu">
+      <ul class="navbar-nav navbar-nav-z1y4 mb-2 mb-2-n8v5 mb-lg-0 mb-lg-0-j9a1 align-items-lg-center align-items-lg-center-g5m2">
+        <li class="nav-item nav-item-x5e8"><a class="nav-link nav-link-m0o7 active active-t4d0" href="#home">Home</a></li>
+        <li class="nav-item nav-item-x5e8"><a class="nav-link nav-link-m0o7" href="/play">Play</a></li>
+        <li class="nav-item nav-item-x5e8"><a class="nav-link nav-link-m0o7" href="#contact">Contact</a></li>
+        <li class="nav-item nav-item-x5e8"><a class="nav-link nav-link-m0o7" href="/disclaimer">Disclaimer</a></li>
+        <li class="nav-item nav-item-x5e8"><a class="nav-link nav-link-m0o7" href="/privacy-policy">Privacy</a></li>
+        <li class="nav-item nav-item-x5e8"><a class="nav-link nav-link-m0o7" href="/terms-and-conditions">Terms</a></li>
+        <li class="nav-item nav-item-x5e8 ms-lg-2 ms-lg-2-k9n5">
+          <a class="spinitagain-sbs-cloud-btn spinitagain-sbs-cloud-btn-g5k6 outline outline-x3a2" href="/play">Start a session</a>
+        </li>
+      </ul>
     </div>
-  </header>
+  </div>
+</nav>
 
-  <main id="main-content">
-    <section class="hero hero--simple" id="overview">
-      <!-- Decorative color orbits keep the hero feeling alive without blocking content -->
-      <div class="color-orbits" aria-hidden="true">
-        <div class="color-orbit color-orbit--one"></div>
-        <div class="color-orbit color-orbit--two"></div>
-        <div class="color-orbit color-orbit--three"></div>
-      </div>
-      <div class="shell hero__simple">
-        <div class="hero__grid hero__grid--primary">
-          <div class="hero__content">
-            <p class="pill">SpinItAgain.sbs Social Casino</p>
-            <h1>Neon spins, analog vibes, zero cash pressure.</h1>
-            <p>SpinItAgain.sbs is the nightly social casino built like a listening bar: hosts cue breathwork, playlists drape the room, and free-to-play rituals replace deposits. Every session keeps conversation, creativity, and care at the center.</p>
-            <div class="hero__badge-row" aria-label="Why players show up">
-              <div class="hero-badge">
-                <span>Live hosts</span>
-                <strong>4 nights / week</strong>
-              </div>
-              <div class="hero-badge">
-                <span>Cash-free play</span>
-                <strong>0% house edge</strong>
-              </div>
-              <div class="hero-badge">
-                <span>Pause tools</span>
-                <strong>Built into chat</strong>
-              </div>
-            </div>
-            <div class="button-row">
-              <a class="btn btn--primary" href="#experience">Enter SpinItAgain.sbs nights</a>
-              <a class="btn btn--ghost" href="/responsible-play/">See our care standards</a>
-            </div>
-            <div class="hero__meta-grid" aria-label="Lounge metrics">
-              <div class="hero__metric">
-                <small>Rooms open</small>
-                <strong>14</strong>
-                <p>Slots, cards, hybrids, and quiet corners.</p>
-              </div>
-              <div class="hero__metric">
-                <small>Check-ins</small>
-                <strong>3 daily</strong>
-                <p>Care prompts morning, afternoon, and late.</p>
-              </div>
-              <div class="hero__metric">
-                <small>House edge</small>
-                <strong>0%</strong>
-                <p>No wallets, no withdrawals, no surprises.</p>
-              </div>
-            </div>
-          </div>
-          <div class="hero__card hero__card--highlight">
-            <p class="pill">Tonight's flow</p>
-            <ul class="hero__schedule">
-              <li>
-                <strong>19:00</strong>
-                <span>Vibe check, aromatherapy cam, and a mellow playlist pick.</span>
-              </li>
-              <li>
-                <strong>20:15</strong>
-                <span>Pass-the-aux slots rotation with live shout-outs.</span>
-              </li>
-              <li>
-                <strong>21:30</strong>
-                <span>Breathing break, hydration cues, and story time.</span>
-              </li>
-              <li>
-                <strong>22:00</strong>
-                <span>Card table cooldown + responsible-play roundup.</span>
-              </li>
-            </ul>
-            <div class="hero__chip-grid" aria-label="Care cues">
-              <div class="hero__chip">
-                <small>Care cue</small>
-                <strong>Hosts mirror your pause settings.</strong>
-              </div>
-              <div class="hero__chip">
-                <small>Soundtrack</small>
-                <strong>Community playlists updated nightly.</strong>
-              </div>
-              <div class="hero__chip">
-                <small>Safety</small>
-                <strong>Moderators respond in under 2 minutes.</strong>
-              </div>
-            </div>
-          </div>
-        </div>
+<!-- HERO -->
+<section id="home" class="spinitagain-sbs-cloud-hero spinitagain-sbs-cloud-hero-c8o7">
+  <div class="container container-g1j0 hero-inner hero-inner-y5d4 text-center text-center-v3f6">
+    <p class="eyebrow eyebrow-n6j7">Entertainment only. No cash, no prizes.</p>
+    <h1 class="hero-title hero-title-i8o2">Quick, free browser play with a social casino feel.</h1>
+    <p class="hero-sub hero-sub-f5g2">
+      Loads fast on phone or desktop. No deposits, no payouts. Great for campaigns or demos.
+      Fun only for adults 18+.
+    </p>
+    <div class="hero-cta hero-cta-w8a3">
+      <a href="/play" class="spinitagain-sbs-cloud-btn spinitagain-sbs-cloud-btn-g5k6 primary primary-e8e2">Play now</a>
+      <a href="#disclaimer-block" class="spinitagain-sbs-cloud-btn spinitagain-sbs-cloud-btn-g5k6 outline outline-x3a2">See safety note</a>
+    </div>
+    <div class="hero-badges hero-badges-t9v9">
+      <span class="pill pill-n7n0 accent accent-r8f9"><i class="fa-solid fa-solid-i1m6 fa-bolt fa-bolt-s5i5"></i>Instant load</span>
+      <span class="pill pill-n7n0"><i class="fa-solid fa-solid-i1m6 fa-shield fa-shield-h6v6"></i>18+ entertainment</span>
+      <span class="pill pill-n7n0"><i class="fa-solid fa-solid-i1m6 fa-mobile-screen fa-mobile-screen-q0m5"></i>Mobile first</span>
+    </div>
   </div>
 </section>
 
+<!-- DISCLAIMER CARD -->
+<section id="disclaimer-block" class="spinitagain-sbs-cloud-disclaimer-card spinitagain-sbs-cloud-disclaimer-card-x3w7 text-center text-center-v3f6" aria-labelledby="disclaimer-title">
+  <div class="container container-g1j0">
+    <div class="disclaimer-box disclaimer-box-b8y8 mx-auto mx-auto-z9k5 p-4 p-4-i7c6">
+      <h2 id="disclaimer-title" class="disclaimer-title disclaimer-title-j4f1">
+        <i class="fas fas-c9r9 fa-circle-exclamation fa-circle-exclamation-l6e8"></i> Important notice
+      </h2>
+      <p class="disclaimer-text disclaimer-text-x5r2">
+        <strong>spinitagain.sbs</strong> is free-to-play social casino style. No money, deposits, or prizes. Adults <strong>18+</strong> only. Please take breaks and play responsibly.
+      </p>
+      <a href="/disclaimer" class="disclaimer-btn disclaimer-btn-j8p4">Read full disclaimer</a>
+    </div>
+  </div>
+</section>
 
-
-    <section class="section section--contrast" id="featured-game">
-      <div class="shell">
-        <div class="section__header">
-          <p class="pill">Featured experience</p>
-          <h2>Rise of Orpheus · free-to-play spotlight.</h2>
-          <p>Take a spin inside our nightly lineup without leaving this page. The Rise of Orpheus demo streams directly in this window&mdash;no deposits, no downloads.</p>
-        </div>
-        <div class="game-showcase">
-          <div class="game-showcase__media">
-            <iframe
-              src="https://released.playngonetwork.com/casino/ContainerLauncher?pid=2&amp;gid=riseoforpheus&amp;lang=en_GB&amp;practice=1&amp;channel=desktop&amp;demo=2"
-              title="Rise of Orpheus demo"
-              loading="lazy"
-              allowfullscreen
-              referrerpolicy="no-referrer"
-            ></iframe>
-          </div>
-          <div class="game-showcase__info">
-            <div>
-              <h3>Why we love it</h3>
-              <ul>
-                <li>Cinematic reels with mythic respins and calm pacing controls.</li>
-                <li>Practice credits only&mdash;perfect for trying new rituals.</li>
-                <li>Works on desktop browsers with zero installs.</li>
-              </ul>
-            </div>
-            <div class="game-showcase__actions button-row">
-              <a class="btn btn--ghost" href="#how-we-play">See how the lounge works</a>
-            </div>
-            <p class="game-showcase__disclaimer">For entertainment only. 18+ social casino experience with no real-money wagering or prizes.</p>
-          </div>
-        </div>
+<!-- FEATURES -->
+<section id="features" class="spinitagain-sbs-cloud-features spinitagain-sbs-cloud-features-m0c2">
+  <div class="container container-g1j0 text-center text-center-v3f6">
+    <h2 class="section-title section-title-p9a8 mb-1 mb-1-e5k0">Built to feel polished</h2>
+    <p class="section-sub section-sub-q2n7">Calm visuals that stay clear and easy to follow.</p>
+    <div class="feature-grid feature-grid-q9w8">
+      <div class="feature-box feature-box-f0h1">
+        <i class="fa-solid fa-solid-i1m6 fa-wand-magic-sparkles fa-wand-magic-sparkles-d0u8 feature-icon feature-icon-b0g2"></i>
+        <h4>Intentional visuals</h4>
+        <p>Glow frames and tidy layouts keep eyes on what matters.</p>
       </div>
-    </section>
-
-
-
-    <section class="section section--contrast" id="origin">
-      <div class="shell">
-        <div class="grid-split origin__intro">
-          <div>
-            <p class="pill">Origin story</p>
-            <h2>How SpinItAgain.sbs became a nightly social casino.</h2>
-            <p>SpinItAgain.sbs started because a few night-shift hosts and sound nerds were tired of casino apps barking at them. We pictured something closer to a record shop lounge: low light, slow spins, and a chat that sounded like friends swapping mixes.</p>
-            <p>Borrowed studios became our sandbox. Analog mixers fed into thrifted laptops, and every interface had to feel like sliding a fresh vinyl from its sleeve. With each test we kept the pieces that felt human and tossed whatever felt pushy.</p>
-            <p>Nights blurred into calibration parties. We practiced greetings out loud, checked captions twice, and rewrote copy until it sounded like a calm host leaning over the booth.</p>
-            <p>The field journal from those sessions still guides every release:</p>
-            <ul class="checklist" aria-label="Founding promises">
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                <span>SpinItAgain.sbs stays cash-free; streaks, pauses, and wellbeing get louder applause than spend.</span>
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                <span>Design and accessibility launch together, so releases freeze if a reader, caption, or focus cue feels off.</span>
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                <span>Community trust outranks content drops&mdash;launches wait until moderation coverage, safety notes, and staff energy feel solid.</span>
-              </li>
-            </ul>
-            <p>That founding momentum still bubbles up during updates: handwritten welcome notes, playlist swaps, and debrief calls where the SpinItAgain.sbs crew listens more than we pitch.</p>
-          </div>
-          <div class="origin__spark" aria-labelledby="spark-title">
-            <div class="origin__spark-header">
-              <p class="pill pill--glow">SpinItAgain heartbeat</p>
-              <h3 id="spark-title">The SpinItAgain heartbeat started during a rain-soaked pop-up.</h3>
-              <p>One Portland weekend the rain wouldn’t let up, so we broke into an unused roller rink with clamp lamps, a cassette deck, and a plastic table. Eight friends lingered until sunrise trading playlists and stretching between spins. It felt homemade but safe, and no one wanted to leave.</p>
-            </div>
-            <div class="origin__spark-grid">
-              <div class="spark-chip">
-                <small>Color wash</small>
-                <strong>Magenta haze</strong>
-                <p>Cheap gels on hardware-store lights made a blur of magenta and teal. That soft glow still shows up in every room.</p>
-              </div>
-              <div class="spark-chip">
-                <small>Soundtrack</small>
-                <strong>Tapes + hum</strong>
-                <p>Two cassette decks and a room fan kept the machines quiet enough for real conversations.</p>
-              </div>
-              <div class="spark-chip">
-                <small>Takeaway</small>
-                <strong>Cash-free joy</strong>
-                <p>No buy-ins, no wallet pop-ups. People relaxed faster when the only goal was hanging out.</p>
-              </div>
-            </div>
-            <ul class="origin__spark-list" aria-label="Principles that still guide us">
-              <li>Cash-outs stay off the table; a streak is worth cheering even if nothing changes hands.</li>
-              <li>Layouts run on humble hardware. If a thrift-store laptop can’t cope, we redesign it.</li>
-              <li>Moderation and support stay human. Scripts help with tone, not with empathy.</li>
-            </ul>
-            <p>We still raise a toast to those original eight players whenever a new room opens. They proved SpinItAgain.sbs could stay generous, transparent, and real.</p>
-          </div>
-        </div>
-        <div class="origin__phases" aria-label="Build phases">
-          <article class="phase-card">
-            <div class="phase-card__label">Neon workshop</div>
-            <h3>Neon workshop</h3>
-            <p>We took over a half-lit print studio, strung cables across drying racks, and taped accessibility checklists to every wall. Copywriters, engineers, and hosts met after work to tweak timing and contrast the way you’d tune a record.</p>
-            <ul class="phase-card__list">
-              <li>Analog gear fed simple web builds so latency stayed low and predictable.</li>
-              <li>Accessibility testers signed off before a single line shipped.</li>
-              <li>Every tactile ritual went into a playbook to keep the digital rooms feeling physical.</li>
-            </ul>
-          </article>
-          <article class="phase-card">
-            <div class="phase-card__label">Community mixtape</div>
-            <h3>Community mixtape</h3>
-            <p>Studio nights spilled into cafes and vinyl shops. We handed out zines with playlist prompts, let guests queue songs from their phones, and snapped instant photos to remember the rituals that worked.</p>
-            <ul class="phase-card__list">
-              <li>Weekly “pass the aux” circles taught us how to highlight member playlists.</li>
-              <li>Punched loyalty cards became the blueprint for streak halos and glow trails.</li>
-              <li>Community briefings surfaced the moderation cues we still use.</li>
-            </ul>
-          </article>
-          <article class="phase-card">
-            <div class="phase-card__label">Host cadence</div>
-            <h3>Host cadence</h3>
-            <p>Once attendance picked up we started training hosts like concierge teams. They practiced greetings, check-ins, and early signals that someone might need a breather long before any alert would flag it.</p>
-            <ul class="phase-card__list">
-              <li>Each shift begins with a wellbeing check and a simple pacing plan.</li>
-              <li>Hosts tag highlights for the nightly lounge brief and safety log.</li>
-              <li>Responsible-play escalations go straight to humans who can pause accounts on the spot.</li>
-            </ul>
-          </article>
-        </div>
+      <div class="feature-box feature-box-f0h1">
+        <i class="fa-solid fa-solid-i1m6 fa-gauge-high fa-gauge-high-t7l5 feature-icon feature-icon-b0g2"></i>
+        <h4>Instant launch</h4>
+        <p>Light HTML means quick loads and gentle battery use.</p>
       </div>
-    </section>
-
-    <section class="section" id="how-we-play">
-
-      <div class="shell">
-
-        <div class="section__header">
-
-          <p class="pill">How we play</p>
-
-          <h2>Free access, social energy, adults only.</h2>
-
-          <p>SpinItAgain.sbs is for lounge fans who crave playlists and conversation more than flashing jackpots. We show up for rituals, not rush.</p>
-
-          <p>Keeping entry free removes hesitation. Centering community invites story swaps. Keeping it 18+ lets every host lean into frank pacing cues and wellbeing check-ins.</p>
-
-          <p>Each session starts with a vibe check, a playlist spotlight, and a reminder that breathing breaks matter as much as streaks.</p>
-
-        </div>
-
-        <div class="content-grid">
-
-          <article class="content-card">
-
-            <h3>Free by design</h3>
-
-            <p>There is no store and no checkout flow. Chips, frames, and glows refresh on a shared cadence so nobody can buy their way to status.</p>
-
-            <p>Rotating rewards feel like gallery exhibits&mdash;frequent enough to stay fresh, intentional enough to feel meaningful. Everyone resets together when the season flips.</p>
-
-          </article>
-
-          <article class="content-card">
-
-            <h3>Community heartbeat</h3>
-
-            <p>We host nightly huddles, keep chat thoughtful, and spotlight member-built playlists. If the energy dips, a real moderator answers within minutes.</p>
-
-            <p>Tuesdays bring album drops, Thursdays spark poker banter, and Sundays end with soft resets where we recap highlights so nobody feels left out.</p>
-
-          </article>
-
-          <article class="content-card">
-
-            <h3>Adults-only lounge</h3>
-
-            <p>Age is verified during onboarding and supported with gentle pacing reminders once you are in. Hosts encourage pauses, hydration, and breaks without shame.</p>
-
-            <p>New arrivals see optional quiet hours, calm prompts, and direct links to care resources whenever stress sneaks in.</p>
-
-          </article>
-
-          <article class="content-card content-card--wide">
-
-            <h3>Shared rituals</h3>
-
-            <p>We toast when someone returns from a break, run collaborative quests that unlock frames for entire rooms, and host "pass the aux" rounds where members set the soundtrack.</p>
-
-            <p>Moderators capture highlights and publish a nightly lounge brief so even if you missed a session you still feel folded into the story.</p>
-
-          </article>
-
-          <article class="content-card content-card--wide">
-
-            <h3>House cues</h3>
-
-            <p>Etiquette boards remind everyone to cheer generously, keep chat kind, respect pauses, and celebrate streaks without pressure.</p>
-
-            <p>The vibe depends on shared cues, so we teach them like a host pointing out where snacks live, how long the music plays, and when to dim the lights.</p>
-
-          </article>
-
-        </div>
-
-      </div>
-
-    </section>
-
-    <section class="section" id="experience">
-
-      <div class="shell">
-
-        <div class="section__header">
-
-          <p class="pill">Experience markers</p>
-
-          <h2>Lounge ambiance, studio discipline.</h2>
-
-          <p>Spatial rhythm, letterforms, and gradients are tuned the way we tune a physical lounge. The interface should feel effortless so the night can feel restful.</p>
-
-          <p>We map every page like a boutique venue&mdash;cushioned corners, clear sight lines, and breathing room so you always know where you are. Moderation follows a studio call sheet with calm hosts and respectful prompts.</p>
-
-        </div>
-
-        <div class="feature-grid">
-
-          <article class="feature-card">
-
-            <div class="feature-card__icon" aria-hidden="true">&#10022;</div>
-
-            <h3>Ambient architecture</h3>
-
-            <p>Dimmable surfaces, layered cards, and soft depth cues let eyes rest between spins. Nothing blinks unless you invite it.</p>
-
-            <p>Glow levels follow the clock&mdash;later sessions lean into softer gradients while daytime events sharpen contrast. Layouts expand like a venue adding or removing lounge chairs.</p>
-
-          </article>
-
-          <article class="feature-card">
-
-            <div class="feature-card__icon" aria-hidden="true">&#9787;</div>
-
-            <h3>Session pacing</h3>
-
-            <p>Built-in pauses remind the room to breathe. Timers stay visible, adjustable, and snoozeable so you control the tempo.</p>
-
-            <p>Prefer a ten-minute break every hour or a gentle buzz after three spins? Set it once and moderators mirror those cues in chat so the whole room stays aligned.</p>
-
-          </article>
-
-          <article class="feature-card">
-
-            <div class="feature-card__icon" aria-hidden="true">&#9647;</div>
-
-            <h3>Community tooling</h3>
-
-            <p>Profiles, frames, and moderator dashboards keep conversations bright. Reports are routed to humans with context, not automated replies.</p>
-
-            <p>We share summaries for every investigation and host weekly town halls where players pitch tweaks or host their own calm watch parties.</p>
-
-          </article>
-
-          <article class="feature-card">
-
-            <div class="feature-card__icon" aria-hidden="true">&#10041;</div>
-
-            <h3>Inclusive palette</h3>
-
-            <p>High-contrast ramps, oversized tap targets, and predictable layouts work across keyboards, readers, and switches.</p>
-
-            <p>Type is co-tested with screen reader users, color ratios stay above WCAG thresholds, and every animation has an off switch before launch.</p>
-
-          </article>
-
-        </div>
-
-      </div>
-
-    </section>
-
-    <section class="section section--contrast" id="rooms">
-
-      <div class="shell grid-split">
-
-        <div>
-
-          <p class="pill">Game rooms</p>
-
-          <h2>Choose a vibe. We'll choreograph the rest.</h2>
-
-          <p>Slots, cards, and arcade mashups all use the same gestures so you never relearn controls when you switch rooms.</p>
-
-          <p>Every space brings its own soundtrack, color temperature, and hosting cadence. Drift to Glass Carousel for hushed lofi, orbit to Orbit Tables for brighter banter, or tap into Drift Arcade for tactile puzzles.</p>
-
-          <p>Hosts audit each room before doors open. They test brightness, color ramps, and chat tools, then swap presets on request without rebooting the table.</p>
-
-          <p>Lighting presets behave like recipes with scent notes, playlist pairings, and community quotes. Bookmark a preset so the room greets you with that mood the next time you visit.</p>
-
-          <p>Once a month we co-design new moods. Members vote on palettes, animation speeds, and diffuser cues; winning ideas run as limited rooms for the next cycle.</p>
-
-          <ul class="checklist" aria-label="Room promises">
-
-            <li>
-
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-
-              <span>Hand-tuned builds keep load times instant on modest connections.</span>
-
-            </li>
-
-            <li>
-
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-
-              <span>Every layout ships with captions, aria labels, skip links, and focus shortcuts.</span>
-
-            </li>
-
-            <li>
-
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-
-              <span>Leaderboards refresh at midday and midnight so they feel celebratory, not stressful.</span>
-
-            </li>
-
-          </ul>
-
-          <p>A live comfort log tracks comments about brightness, pacing, or chat tone. Hosts follow up, adjust the preset, and record the change for anyone who loves that vibe.</p>
-
-          <p>Story-driven nights pull from weekly polls&mdash;aurora gradients from travelers, beach patios with acoustic sets, or retro arcades with neon percussion.</p>
-
-          <p>Mission cards invite small gestures: write a compliment, swap playlists, or lead a collective stretch. Complete one and the lighting shifts to acknowledge the ritual.</p>
-
-          <p>A daily room schedule helps you plan your night. Sink into one vibe or roam across many; hosts can see your preferred pace as soon as you arrive.</p>
-
-          <p>Schedule posts outline accessibility tweaks, moderator rotations, and playlist curators. Nights with interpreters or multilingual hosts are flagged so you can invite friends who rely on those tools.</p>
-
-          <p>During slower hours we open a shared commons with neutral lighting and a low hum so you can sip something warm and compare rituals.</p>
-
-          <p>The commons doubles as an audition bay for experimental rooms. Builders prototype live, gather feedback, and graduate to rotation once the mood lands.</p>
-
-          <p>Weekend sensory tours let hosts dim lights, describe color shifts, and preview soundtracks so you know what to expect before committing.</p>
-
-          <p>We keep a history archive for every room. Scroll through lighting choices, playlists, and community notes to relive a night or borrow inspiration for your own gatherings.</p>
-
-          <p>Our tooling suggests palettes that pair best with certain games, but you always have final say on the mood.</p>
-
-          <p>Each room features a chill signal. Tap once to slow the pace, tap twice to pause for stretches or hydration so the whole space stays synced.</p>
-
-        </div>
-
-        <div class="feature-card">
-
-          <h3>Rooms currently open</h3>
-
-          <p>We rotate anchor experiences to keep the lounge fresh and inclusive. Here is what is live right now plus the rituals that shape them.</p>
-
-          <dl>
-
-            <dt>Glass Carousel</dt>
-
-            <dd>Lofi slots with collaborative multipliers, whispered callouts, and velvet lighting presets. Hosts hand the aux cord to players who want to share gentle soundscapes.</dd>
-
-            <dt>Orbit Tables</dt>
-
-            <dd>Social poker bursts with prompts every three hands, celebratory toasts, and bright palettes for extroverts.</dd>
-
-            <dt>Drift Arcade</dt>
-
-            <dd>A hybrid pachinko-plus-puzzle lane for tactile breaks, complete with optional haptics and color waves that sync with your wins.</dd>
-
-            <dt>Beacon Chorus</dt>
-
-            <dd>A communal music lounge where slot outcomes trigger soft synth pads so members can build harmonies together.</dd>
-
-            <dt>Quiet Comet</dt>
-
-            <dd>A low-light meditation room with slow card timers, guided breathing cues, and our calmest host on comms.</dd>
-
-          </dl>
-
-          <p>Each listing links to a dossier with playlists, host bios, accessibility notes, and snack suggestions if you want to mirror the vibe at home.</p>
-
-          <p>If a room feels full, reserve a future slot to guarantee space. Attendance caps keep moderation human and comfortable.</p>
-
-        </div>
-
-      </div>
-
-    </section>
-
-    <section class="section" id="community">
-
-      <div class="shell">
-
-        <div class="section__header">
-
-          <p class="pill">Community energy</p>
-
-          <h2>Respect is the jackpot.</h2>
-
-          <p>SpinItAgain.sbs only works when the lounge feels like a trusted crew unwinding after long days. Everyone in the room is a co-pilot, not a handle to chase.</p>
-
-          <p>Moderators, tooling, and support docs are tuned like a studio session&mdash;clear roles, soft cues, and responsive care. We refine the playbook nightly with player feedback.</p>
-
-          <p>When someone checks in they step into a circle that values consent, clarity, and goofy joy in equal measure. That balance is the real prize.</p>
-
-        </div>
-
-        <div class="support-grid">
-
-          <article class="support-card">
-
-            <h3>Guides & standards</h3>
-
-            <p>Every player agrees to our <a href="/community-guidelines/">community guidelines</a> before chatting. The handbook is plain language, outlines consequences, and explains the exact appeal path.</p>
-
-            <p>We list behaviors we celebrate, ones we challenge, and the moderation steps that follow if energy slips.</p>
-
-            <p>Guidelines update whenever we spot a new edge case. If a rule feels stale, we workshop it with the community and publish revisions fast.</p>
-
-          </article>
-
-          <article class="support-card">
-
-            <h3>Privacy-forward</h3>
-
-            <p>Profiles stay lightweight on purpose. Review what we store inside the <a href="/privacy/">privacy brief</a> and email <a href="mailto:support@spinitagain.sbs">support@spinitagain.sbs</a> to adjust anything manually.</p>
-
-            <p>Display names, pronouns, and soundtrack notes are details you lend us temporarily. Edit them yourself or email support and a human will handle it manually.</p>
-
-            <p>Quarterly privacy reviews run live so anyone can ask why we collect a stat and how long it stays.</p>
-
-          </article>
-
-          <article class="support-card">
-
-            <h3>Accessibility notes</h3>
-
-            <p>Static templates, semantic headings, and color audits anchor our <a href="/accessibility/">accessibility statement</a>.</p>
-
-            <p>Players using screen readers help us map every aria-label in the lounge, and we compensate them for that labor. Releases pause if contrast, focus, or captions drift.</p>
-
-            <p>We keep a backlog of comfort tweaks&mdash;bigger chat fonts, reduced animations&mdash;and ship them once two or more folks request the same change.</p>
-
-          </article>
-
-          <article class="support-card">
-
-            <h3>Data requests</h3>
-
-            <p>Need a copy or deletion? Visit the <a href="/data-rights/">data rights</a> desk and we will respond within 48 hours.</p>
-
-            <p>Each request gets a named human, a timeline, and a summary of every system touched. No mystery PDFs, no legal ping-pong.</p>
-
-            <p>If we ever slip up, we log it publicly and fix the workflow so the next request flows smoother.</p>
-
-          </article>
-
-        </div>
-
-        <div class="callout" style="margin-top:2.5rem;">
-
-          <h3>Responsible play is built in.</h3>
-
-          <p>Visit the <a href="/responsible-play/">Responsible Play Center</a> to pause your account, set limits, or find resources. The desk is staffed by people who would rather help you take a breather than chase one more spin.</p>
-
-          <p>Hosts shout pacing cues during sessions, check in privately if you seem off, and celebrate breaks the same way they celebrate streaks.</p>
-
-          <ul class="checklist" aria-label="Responsible play rituals">
-
-            <li>
-
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-
-              <span>Mid-session pauses with breathing prompts, hydration reminders, and gentle resets.</span>
-
-            </li>
-
-            <li>
-
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-
-              <span>One-tap access to multilingual resources vetted every quarter.</span>
-
-            </li>
-
-            <li>
-
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-
-              <span>Follow-up emails that recap the steps you took and how to reach us again.</span>
-
-            </li>
-
-          </ul>
-
-          <div class="button-row">
-
-            <a class="btn btn--soft" href="/how-it-works/">See how SpinItAgain.sbs works</a>
-
-            <a class="btn btn--primary" href="/contact/">Talk to a host</a>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-  </main>  </main>
-
-  <footer class="footer">
-    <div class="shell footer__grid">
-      <div>
-        <a class="brand" href="/" aria-label="SpinItAgain.sbs home">
-                  <div class='brand__logo' role='img' aria-label='SpinItAgain.sbs neon domain logo'>
-          <span aria-hidden='true'>SPINITAGAIN.SBS</span>
-        </div>
-        </a>
-        <p>SpinItAgain.sbs keeps social casino nights calm, human, and quick to support.</p>
-      </div>
-      <div>
-        <small>Explore</small>
-        <p><a href="/how-it-works/">How it works</a><br>
-        <a href="/terms/">Terms</a><br>
-        <a href="/privacy/">Privacy</a><br>
-        <a href="/cookie-policy/">Cookie policy</a></p>
-      </div>
-      <div>
-        <small>Support</small>
-        <p><a href="/responsible-play/">Responsible play</a><br>
-        <a href="/data-rights/">Data rights</a><br>
-        <a href="/accessibility/">Accessibility</a><br>
-        <a href="/contact/">Contact</a><br>
-        <a href="/cookie-settings/">Cookie settings</a></p>
+      <div class="feature-box feature-box-f0h1">
+        <i class="fa-solid fa-solid-i1m6 fa-shield-halved fa-shield-halved-y4r3 feature-icon feature-icon-b0g2"></i>
+        <h4>Responsible by design</h4>
+        <p>18+ gates, plain language, and no payments so everyone knows it is just for fun.</p>
       </div>
     </div>
-    <div class="shell footer__logos" aria-label="Safety and support partners">
-      <a href="https://www.dmca.com/" target="_blank" rel="noopener nofollow">
-        <img src="/public/images/footerimages/dmcaprotectionlogo.webp" alt="DMCA.com protection status">
-      </a>
-      <a href="https://www.gordonmoody.org.uk/" target="_blank" rel="noopener nofollow">
-        <img src="/public/images/footerimages/gordonmoodywhitelogo.webp" alt="Gordon Moody charity">
-      </a>
-      <a href="https://peluuri.fi/en/" target="_blank" rel="noopener nofollow">
-        <img src="/public/images/footerimages/peluurifoot.webp" alt="Peluuri helpline">
-      </a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="spinitagain-sbs-cloud-about spinitagain-sbs-cloud-about-e2w5">
+  <div class="container container-g1j0">
+    <div class="about-grid about-grid-n9s2">
+      <div class="about-visual about-visual-a0f9">
+        <img src="/public/images/herobackground.webp" alt="Spinitagain hero collage">
+      </div>
+      <div class="about-text about-text-l5t2">
+        <h2 class="section-title section-title-p9a8">Built for calm, quick play</h2>
+        <p>
+          We kept it minimal and tuned for <strong>spinitagain.sbs</strong>. Fast loads, light motion, and clear calls to action.
+        </p>
+        <p>
+          Made for campaigns, social casino demos, and quick previews. No downloads or wallets; just a simple lane to show what matters.
+        </p>
+        <a href="#contact" class="spinitagain-sbs-cloud-btn spinitagain-sbs-cloud-btn-g5k6 primary primary-e8e2">Collaborate with us</a>
+      </div>
     </div>
-  </footer>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" class="spinitagain-sbs-cloud-reviews spinitagain-sbs-cloud-reviews-g1w8">
+  <div class="container container-g1j0">
+    <h2 class="section-title section-title-p9a8 mb-1 mb-1-e5k0 text-center text-center-v3f6">What visitors say</h2>
+    <p class="section-sub section-sub-q2n7 text-center text-center-v3f6">Quick notes from early testers.</p>
+    <div class="reviews-grid reviews-grid-j1j6">
+      <div class="review-card review-card-f9q7">
+        <p class="review-text review-text-d7o9">“Gives me a calm pause between calls — polished, quick, and right to the point.”</p>
+        <h5 class="review-author review-author-g0v2">— L. Hart</h5>
+      </div>
+      <div class="review-card review-card-f9q7">
+        <p class="review-text review-text-d7o9">“Loads fast on my phone and the visuals stay clean. Perfect for a quick reset.”</p>
+        <h5 class="review-author review-author-g0v2">— Ana S.</h5>
+      </div>
+      <div class="review-card review-card-f9q7">
+        <p class="review-text review-text-d7o9">“On mobile it just works — straightforward layout with no extra noise.”</p>
+        <h5 class="review-author review-author-g0v2">— Priya R.</h5>
+      </div>
+      <div class="review-card review-card-f9q7">
+        <p class="review-text review-text-d7o9">“Minimal and refreshing. Exactly the kind of quick break I want without distractions.”</p>
+        <h5 class="review-author review-author-g0v2">— Dan K.</h5>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="spinitagain-sbs-cloud-contact spinitagain-sbs-cloud-contact-y3q1">
+  <div class="container container-g1j0">
+    <h2 class="section-title section-title-p9a8 text-center text-center-v3f6 mb-1 mb-1-e5k0">Contact</h2>
+    <p class="section-sub section-sub-q2n7 text-center text-center-v3f6">Ask for feedback, campaign slots, or a custom embed.</p>
+
+    <div class="contact-grid contact-grid-x1h0">
+      <div class="contact-info contact-info-v7t1">
+        <h4>Get in touch</h4>
+        <p><strong>Email:</strong> <a href="mailto:hello@spinitagain.sbs" class="link-accent link-accent-t0s6">hello@spinitagain.sbs</a></p>
+        <p><strong>Business:</strong> Spinitagain Cloud</p>
+        <p><strong>Location:</strong> Remote-first studio</p>
+        <p><strong>Hours:</strong> Monday–Friday, 9:00 AM – 5:00 PM (PST)</p>
+        <p><strong>Support:</strong> Replies within 24–48 hours.</p>
+      </div>
+
+      <form id="hubForm" class="contact-form contact-form-y8n9" novalidate>
+        <input type="text" id="hubName" placeholder="Your name" required minlength="2" maxlength="60">
+        <input type="email" id="hubEmail" placeholder="you@example.com" required>
+        <textarea id="hubMessage" rows="5" placeholder="Your message" required></textarea>
+        <button type="submit" class="spinitagain-sbs-cloud-btn spinitagain-sbs-cloud-btn-g5k6 primary primary-e8e2">Send message</button>
+        <p id="hubStatus" class="form-status form-status-s0n6" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="spinitagain-sbs-cloud-footer spinitagain-sbs-cloud-footer-y5k0">
+  <div class="container container-g1j0">
+    <div class="footer-brand footer-brand-p9z8">
+      <img class="brand-logo brand-logo-c2e3" src="/public/images/logo.webp" alt="Spinitagain logo">
+      <span class="sr-only sr-only-b4d1">spinitagain.sbs</span>
+    </div>
+
+    <div class="footer-disclaimer footer-disclaimer-r3t2">
+      <h5 class="disclaimer-heading disclaimer-heading-w8s6"><i class="fas fas-c9r9 fa-snowflake fa-snowflake-c4q3 me-2 me-2-e8c6"></i> Responsible play notice</h5>
+      <p>
+        <strong>spinitagain.sbs</strong> provides free-to-play, social casino style digital experiences for adults aged
+        <strong>18+</strong>. There are no monetary incentives or rewards. Please engage responsibly and take regular breaks
+        for a healthy balance.
+      </p>
+    </div>
+
+    <ul class="footer-links footer-links-o0s5">
+      <li><a href="/">Home</a></li>
+      <li><a href="/play">Play</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="/disclaimer">Disclaimer</a></li>
+      <li><a href="/privacy-policy">Privacy Policy</a></li>
+      <li><a href="/terms-and-conditions">Terms &amp; Conditions</a></li>
+    </ul>
+
+    <p class="footer-copy footer-copy-c7h0">
+      © <span data-year></span> spinitagain.sbs
+    </p>
+  </div>
+</footer>
+
+<!-- SCROLL TO TOP -->
+<button id="hubScrollTop" class="spinitagain-sbs-cloud-scroll spinitagain-sbs-cloud-scroll-h7p4" aria-label="Scroll to top">
+  <i class="fas fas-c9r9 fa-chevron-up fa-chevron-up-q5p4"></i>
+</button>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/main.js" defer></script>
+
+
+
+
 </body>
 </html>

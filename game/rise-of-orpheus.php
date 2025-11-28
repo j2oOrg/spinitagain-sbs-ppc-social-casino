@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rise of Orpheus - Social Casino</title>
-    <link rel="icon" type="image/png" href="images/logo.webp">
+    <link rel="icon" type="image/png" href="/public/images/logo.webp">
     <link rel="stylesheet" href="css/style30f4.css?v=4">
 </head>
 <body>
@@ -280,7 +280,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="container">
         <div class="logo">
             <a href="index.php">
-                <img src="images/logo.webp" alt="Social Casino Logo" class="logo-image">
+                <img src="/public/images/logo.webp" alt="Social Casino Logo" class="logo-image">
                 <span class="site-name">sweetswoop</span>
             </a>
         </div>
@@ -340,21 +340,21 @@ document.addEventListener('DOMContentLoaded', function() {
                     <h3>More Games</h3>
                     <div class="games-grid">
                                                 <div class="game-card" data-game="a2711edd47f8e4c6e72f29a96b4f878c">
-                            <img src="games-image/tombofgold2_Panel_Small.webp" 
+                            <img src="/public/images/logobackground.webp" 
                                  alt="Tomb of Gold II" 
                                  class="game-icon">
                             <h4>Tomb of Gold II</h4>
                             <a href="tomb-of-gold-ii.php?title=Tomb+of+Gold+II" class="play-btn">Play Now</a>
                         </div>
                                                 <div class="game-card" data-game="c13c39ab342c1ea3e72c2f0c6251ae21">
-                            <img src="games-image/leprechaundiamonddig_Panel_Small.webp" 
+                            <img src="/public/images/herobackground.webp" 
                                  alt="Leprechaun&#039;s Diamond Dig" 
                                  class="game-icon">
                             <h4>Leprechaun&#039;s Diamond Dig</h4>
                             <a href="leprechauns-diamond-dig.php?title=Leprechaun%27s+Diamond+Dig" class="play-btn">Play Now</a>
                         </div>
                                                 <div class="game-card" data-game="1c39064189e1cd1eb3ebc9c1d31b569a">
-                            <img src="games-image/lionsagaodyssey_Panel_Small.webp" 
+                            <img src="/public/images/logo.webp" 
                                  alt="Lion Saga Odyssey" 
                                  class="game-icon">
                             <h4>Lion Saga Odyssey</h4>
@@ -467,22 +467,22 @@ document.addEventListener('DOMContentLoaded', function() {
             <!-- Footer Icons with Links -->
             <div class="footer-icons-with-links">
                 <a href="https://gamblingtherapy.org/" target="_blank" rel="noopener">
-                    <img src="images/gambling-therapy.png" alt="Gambling Therapy" class="footer-link-image">
+                    <img src="/public/images/footerimages/peluurifoot.webp" alt="Gambling Therapy" class="footer-link-image">
                 </a>
 
                 <a href="https://www.gamcare.org.uk/" target="_blank" rel="noopener">
-                    <img src="images/gamcare.png" alt="GamCare" class="footer-link-image">
+                    <img src="/public/images/footerimages/gordonmoodywhitelogo.webp" alt="GamCare" class="footer-link-image">
                 </a>
 
                 <a href="https://www.gambleaware.org/" target="_blank" rel="noopener">
-                    <img src="images/gambleaware.png" alt="GambleAware" class="footer-link-image">
+                    <img src="/public/images/footerimages/dmcaprotectionlogo.webp" alt="GambleAware" class="footer-link-image">
                 </a>
             </div>
         </div>
 
         <!-- Footer Icons without Links -->
         <div class="footer-icons-no-links">
-            <img src="images/footer-icons.png" alt="Footer Icons" class="footer-icons-image">
+            <img src="/public/images/shareimage.webp" alt="Footer Icons" class="footer-icons-image">
         </div>
 
         <!-- Copyright -->
